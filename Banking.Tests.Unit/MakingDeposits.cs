@@ -9,7 +9,7 @@ public class MakingDeposits
     public void MakingDepositsIncreasesBalance()
     {
         // Given
-        var account = new Account();
+        var account = new Account(new BonusCalculatorDummy());
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
         // When

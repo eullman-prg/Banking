@@ -3,8 +3,13 @@
 public class Account
 {
     private decimal _balance = 5000M;
+    private ICalculateBonusesForAccounts _bonusCalculator;
 
-  
+    public Account(ICalculateBonusesForAccounts bonusCalculator)
+    {
+        _bonusCalculator = bonusCalculator;
+    }
+
     public decimal GetBalance()
     {
         return _balance;
@@ -12,8 +17,9 @@ public class Account
 
     public void Deposit(decimal amountToDeposit)
     {
-        var bonusCalculator = new BonusCalculator();
-        _balance += amountToDeposit + bonusCalculator.GetBonusForDepositOn(_balance, amountToDeposit);
+        // WTCYWYH
+    decimal bonus = _bonusCalculator.AccountDepositOf(_balance, amountToDeposit);
+        _balance += amountToDeposit + bonus;
     }
 
     public void Withdraw(decimal amountToWithdraw)
