@@ -3,6 +3,8 @@
 public class Account
 {
     private decimal _balance = 5000M;
+
+  
     public decimal GetBalance()
     {
         return _balance;
@@ -10,7 +12,8 @@ public class Account
 
     public void Deposit(decimal amountToDeposit)
     {
-       _balance += amountToDeposit;
+        var bonusCalculator = new BonusCalculator();
+        _balance += amountToDeposit + bonusCalculator.GetBonusForDepositOn(_balance, amountToDeposit);
     }
 
     public void Withdraw(decimal amountToWithdraw)
