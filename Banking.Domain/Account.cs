@@ -2,13 +2,13 @@
 
 public class Account
 {
-    private decimal _balance = 5000M;
+    protected decimal _balance = 5000M;
     public decimal GetBalance()
     {
         return _balance;
     }
 
-    public void Deposit(decimal amountToDeposit)
+    public virtual void Deposit(decimal amountToDeposit)
     {
        _balance += amountToDeposit;
     }
