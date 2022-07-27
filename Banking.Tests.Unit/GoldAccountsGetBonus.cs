@@ -1,22 +1,24 @@
 ﻿
 
-
 namespace Banking.Tests.Unit;
 
-public class MakingDeposits
+public class GoldAccountsGetBonus
 {
     [Fact]
-    public void MakingDepositsIncreasesBalance()
+    public void GoldAccountsGetBonusOnDeposit()
     {
         // Given
         var account = new Account();
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
-        account.Status = AccountStatus.Standard;
+        account.Status = AccountStatus.Gold;
         // When
+
         account.Deposit(amountToDeposit);
+
+
         // Then
-        Assert.Equal(openingBalance + amountToDeposit,
-            account.GetBalance());
+        Assert.Equal(openingBalance + amountToDeposit + 10M, account.GetBalance());
+        
     }
 }
