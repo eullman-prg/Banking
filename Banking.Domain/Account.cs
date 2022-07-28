@@ -4,10 +4,12 @@ public class Account
 {
     private decimal _balance = 5000M;
     private ICalculateBonusesForAccounts _bonusCalculator;
+    private INotifyTheFed _fedNotifier;
 
-    public Account(ICalculateBonusesForAccounts bonusCalculator)
+    public Account(ICalculateBonusesForAccounts bonusCalculator, INotifyTheFed fedNotifier)
     {
         _bonusCalculator = bonusCalculator;
+        _fedNotifier = fedNotifier;
     }
 
     public decimal GetBalance()
@@ -33,6 +35,8 @@ public class Account
         }
         else
         {
+            // Write the Code i wish I had
+            _fedNotifier.NotifyOfWithdrawal(this, amountToWithdraw);
             _balance -= amountToWithdraw;
         }
     }

@@ -10,7 +10,7 @@ public class MakingWithdrawals
 
     public MakingWithdrawals()
     {
-        _account = new Account(new BonusCalculatorDummy());
+        _account = new Account(new Mock<ICalculateBonusesForAccounts>().Object, new Mock<INotifyTheFed>().Object);
     }
 
    

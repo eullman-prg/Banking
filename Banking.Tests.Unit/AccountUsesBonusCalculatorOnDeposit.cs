@@ -11,7 +11,7 @@ public class AccountUsesBonusCalculatorOnDeposit
 
         // Given
         var stubbedCalculator = new Mock<ICalculateBonusesForAccounts>();
-        var account = new Account(stubbedCalculator.Object);
+        var account = new Account(stubbedCalculator.Object, new Mock<INotifyTheFed>().Object);
         stubbedCalculator.Setup(e => e.AccountDepositOf(account.GetBalance(), 110M)).Returns(42M);
 
 
