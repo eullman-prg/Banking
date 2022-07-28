@@ -37,6 +37,7 @@ public class Account
         {
             // Write the Code i wish I had
             _fedNotifier.NotifyOfWithdrawal(this, amountToWithdraw);
+           
             _balance -= amountToWithdraw;
         }
     }

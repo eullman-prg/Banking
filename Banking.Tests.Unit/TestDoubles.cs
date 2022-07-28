@@ -17,3 +17,11 @@ public class StubbedCalculator : ICalculateBonusesForAccounts
         return balance == 5000M & amountToDeposit == 110M ? 42 : 0;
     }
 }
+
+public class DummyFedNotifier : INotifyTheFed
+{
+    public void NotifyOfWithdrawal(Account account, decimal amountToWithdraw)
+    {
+        // nothing.
+    }
+}
