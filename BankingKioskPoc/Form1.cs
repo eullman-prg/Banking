@@ -39,6 +39,10 @@ namespace BankingKioskPoc
 
               
             }
+            catch(NegativeValuesNotAllowedException)
+            {
+                MessageBox.Show("What are you, a haxx0r!!! The police have been called!");
+            }
             catch (FormatException)
             {
 
