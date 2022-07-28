@@ -17,6 +17,7 @@ public class Account
 
     public void Deposit(decimal amountToDeposit)
     {
+        GuardAgainstNegativeNumbers(amountToDeposit);
         // WTCYWYH
     decimal bonus = _bonusCalculator.AccountDepositOf(_balance, amountToDeposit);
         _balance += amountToDeposit + bonus;
@@ -24,6 +25,7 @@ public class Account
 
     public void Withdraw(decimal amountToWithdraw)
     {
+        GuardAgainstNegativeNumbers(amountToWithdraw);
         if (amountToWithdraw > _balance)
         {
 
@@ -33,6 +35,11 @@ public class Account
         {
             _balance -= amountToWithdraw;
         }
+    }
+
+    private void GuardAgainstNegativeNumbers(decimal amount)
+    {
+        if (amount < 0) throw new NegativeValuesNotAllowedException();
     }
 }
 

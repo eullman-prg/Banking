@@ -59,3 +59,18 @@ public class BonusCalculatorTests
         Assert.Equal(100M, bonus);
     }
 }
+
+
+public class DemoOfImplicitVsExplicitInterfaceStuff
+{
+    [Fact]
+    public void Implicit()
+    {
+        ICalculateBonusesForAccounts bonusCalculator = new BonusCalculator();
+
+        var amount = bonusCalculator.AccountDepositOf(1000, 10);
+    
+    }
+
+
+}
