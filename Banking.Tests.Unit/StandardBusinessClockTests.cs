@@ -21,7 +21,7 @@ public class StandardBusinessClockTests
     {
         var stubbedClock = new Mock<ISystemTime>();
         IProvideTheBusinessClock clock = new StandardBusinessClock(stubbedClock.Object);
-        stubbedClock.Setup(c => c.GetCurrent()).Returns(new DateTime(2022, 7, 29, 17, 00, 00));
+        stubbedClock.Setup(c => c.GetCurrent()).Returns( new DateTime(2022, 7, 29, 17, 00, 00) );
 
 
         Assert.False(clock.IsDuringBusinessHours());

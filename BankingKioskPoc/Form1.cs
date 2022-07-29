@@ -2,7 +2,7 @@ using Banking.Domain;
 
 namespace BankingKioskPoc
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, INotifyTheFed
     {
 
         private Account _account;
@@ -10,9 +10,14 @@ namespace BankingKioskPoc
         {
             InitializeComponent();
             // "Composition Root"
-            _account = new Account(new BonusCalculator());
+            _account = new Account(new BusinessClockDrivenBonusCalculator(new StandardBusinessClock(new SystemTime())), this);
 
             this.Text = _account.GetBalance().ToString("c");
+        }
+
+        public void NotifyOfWithdrawal(Account account, decimal amountToWithdraw)
+        {
+            MessageBox.Show($"Notifying the fed of withdrawal of {amountToWithdraw:c}");
         }
 
         private void button1_Click(object sender, EventArgs e)

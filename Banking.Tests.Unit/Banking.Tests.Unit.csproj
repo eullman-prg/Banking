@@ -26,4 +26,12 @@
     <ProjectReference Include="..\Banking.Domain\Banking.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\dev\Banking\Banking.Tests.Unit\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\dev\Banking\Banking.Tests.Unit\.editorconfig" />
+  </ItemGroup>
+
 </Project>
