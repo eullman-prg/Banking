@@ -10,8 +10,32 @@ public class StandardBusinessClock : IProvideTheBusinessClock
         _clock = clock;
     }
 
-    bool IProvideTheBusinessClock.IsDuringBusinessHour()
+    bool IProvideTheBusinessClock.IsDuringBusinessHours()
     {
-        return _clock.GetCurrent().Hour >= 9 && _clock.GetCurrent().Hour < 17;
+        var now = _clock.GetCurrent();
+
+        return now switch
+        {
+            var d when IsHoliday(d) => false,
+            var d when IsWeekend(d) => false,
+            _ => DuringOpenTimes(now)
+        };
+      
+    }
+
+    private static bool IsHoliday(DateTime now)
+    {
+        var holidays = new List<(int, int)> { (4, 7), (25, 12), (20, 4) };
+        return holidays.Any(h => h == (now.Day, now.Month));
+    }
+
+    private bool DuringOpenTimes(DateTime now)
+    {
+        return now.Hour >= 9 && now.Hour < 17;
+    }
+
+    private  bool IsWeekend(DateTime now)
+    {
+        return now.DayOfWeek == DayOfWeek.Saturday || now.DayOfWeek == DayOfWeek.Sunday;
     }
 }

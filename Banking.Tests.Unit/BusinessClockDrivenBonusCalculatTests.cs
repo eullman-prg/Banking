@@ -11,7 +11,7 @@ public class BusinessClockDrivenBonusCalculatTests
     {
         var stubbedClock = new Mock<IProvideTheBusinessClock>();
         ICalculateBonusesForAccounts bonusCalculator = new BusinessClockDrivenBonusCalculator(stubbedClock.Object);
-        stubbedClock.Setup(c => c.IsDuringBusinessHour()).Returns(true);
+        stubbedClock.Setup(c => c.IsDuringBusinessHours()).Returns(true);
 
         var bonus = bonusCalculator.AccountDepositOf(10000, 100);
 
@@ -23,7 +23,7 @@ public class BusinessClockDrivenBonusCalculatTests
     {
         var stubbedClock = new Mock<IProvideTheBusinessClock>();
         ICalculateBonusesForAccounts bonusCalculator = new BusinessClockDrivenBonusCalculator(stubbedClock.Object);
-        stubbedClock.Setup(c => c.IsDuringBusinessHour()).Returns(false);
+        stubbedClock.Setup(c => c.IsDuringBusinessHours()).Returns(false);
 
         var bonus = bonusCalculator.AccountDepositOf(10000, 100);
 

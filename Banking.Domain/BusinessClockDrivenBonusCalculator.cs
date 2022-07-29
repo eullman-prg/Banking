@@ -11,7 +11,7 @@ public class BusinessClockDrivenBonusCalculator : ICalculateBonusesForAccounts
 
     decimal ICalculateBonusesForAccounts.AccountDepositOf(decimal balance, decimal amountToDeposit)
     {
-        if (_businessClock.IsDuringBusinessHour())
+        if (_businessClock.IsDuringBusinessHours())
         {
             return balance switch
             {

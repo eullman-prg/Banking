@@ -2,5 +2,5 @@
 
 public interface IProvideTheBusinessClock
 {
-    bool IsDuringBusinessHour();
+    bool IsDuringBusinessHours();
 }
